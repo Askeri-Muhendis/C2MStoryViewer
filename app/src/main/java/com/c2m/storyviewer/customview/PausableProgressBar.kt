@@ -5,11 +5,10 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.Animation
-import android.view.animation.Animation.AnimationListener
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
-import com.c2m.storyviewer.utils.PausableScaleAnimation
 import com.c2m.storyviewer.R
+import com.c2m.storyviewer.utils.PausableScaleAnimation
 
 class PausableProgressBar @JvmOverloads constructor(
     context: Context,
@@ -96,7 +95,7 @@ class PausableProgressBar @JvmOverloads constructor(
             )
         animation!!.duration = duration
         animation!!.interpolator = LinearInterpolator()
-        animation!!.setAnimationListener(object : AnimationListener {
+        animation!!.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {
                 if (isStarted) {
                     return

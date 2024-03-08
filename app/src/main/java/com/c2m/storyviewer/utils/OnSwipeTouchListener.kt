@@ -50,10 +50,10 @@ open class OnSwipeTouchListener(context: Activity) : View.OnTouchListener {
             return true
         }
 
-        override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+        override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
             var result = false
             try {
-                val diffY = e2.y - e1.y
+                val diffY = e2.y - e1!!.y
                 if (abs(diffY) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffY > 0) {
                         onSwipeBottom()
@@ -68,7 +68,7 @@ open class OnSwipeTouchListener(context: Activity) : View.OnTouchListener {
             return result
         }
 
-        override fun onLongPress(e: MotionEvent?) {
+        override fun onLongPress(e: MotionEvent) {
             onLongClick()
         }
     }

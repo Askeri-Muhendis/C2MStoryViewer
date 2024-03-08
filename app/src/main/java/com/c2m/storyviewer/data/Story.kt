@@ -7,4 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class Story(val url: String, val storyDate: Long) : Parcelable {
 
     fun isVideo() =  url.contains(".mp4")
+    fun isHls() = url.contains(".m3u8")
 }

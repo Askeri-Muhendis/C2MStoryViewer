@@ -1,17 +1,16 @@
 package com.c2m.storyviewer.app
 
 import android.app.Application
-import com.google.android.exoplayer2.database.DatabaseProvider
-import com.google.android.exoplayer2.database.ExoDatabaseProvider
-import com.google.android.exoplayer2.upstream.cache.LeastRecentlyUsedCacheEvictor
-import com.google.android.exoplayer2.upstream.cache.SimpleCache
-
+import androidx.media3.database.DatabaseProvider
+import androidx.media3.database.StandaloneDatabaseProvider
+import androidx.media3.datasource.cache.LeastRecentlyUsedCacheEvictor
+import androidx.media3.datasource.cache.SimpleCache
 class StoryApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
         val leastRecentlyUsedCacheEvictor = LeastRecentlyUsedCacheEvictor(90 * 1024 * 1024)
-        val databaseProvider: DatabaseProvider = ExoDatabaseProvider(this)
+        val databaseProvider: DatabaseProvider = StandaloneDatabaseProvider(this)
 
         if (simpleCache == null) {
             simpleCache = SimpleCache(cacheDir, leastRecentlyUsedCacheEvictor, databaseProvider)
